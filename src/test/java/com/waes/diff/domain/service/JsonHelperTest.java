@@ -18,11 +18,21 @@ public class JsonHelperTest {
 
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldNotConvertInvalidContent() {
+        jsonHelper.fromBase64("eyJ0ZXN0IjogImludmFsaWR9");
+    }
+
     @Test
     public void fromBase64() throws Exception {
         JsonNode jsonNode = jsonHelper.fromBase64("eyJmaXJzdE5hbWUiOiAiVGlhZ28iLCAibGFzdE5hbWUiOiAiQm9ubyJ9");
         String json = objectMapper.writeValueAsString(jsonNode);
         Assert.assertEquals("{\"firstName\":\"Tiago\",\"lastName\":\"Bono\"}", json);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void shouldNotCompareNull() {
+        jsonHelper.compare(null, null);
     }
 
     @Test
