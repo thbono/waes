@@ -25,7 +25,7 @@ public class JsonHelper {
         try {
             return objectMapper.readTree(Base64.getDecoder().decode(content));
         } catch (Exception ex) {
-            throw new IllegalArgumentException("Invalid content");
+            throw new IllegalArgumentException("Invalid content", ex);
         }
     }
 
