@@ -28,3 +28,13 @@ Post contents (Base64 encoded JSON)
 Get the diff
 
     GET /v1/diff/{id}
+    
+## Request samples
+
+    curl -X POST http://localhost:8080/v1/diff/1/left -d eyJmaXJzdE5hbWUiOiAiVGlhZ28iLCAibGFzdE5hbWUiOiAiQm9ubyJ9
+    
+    curl -X POST http://localhost:8080/v1/diff/1/right -d eyJmaXJzdE5hbWUiOiAiVGlhZ28iLCAibGFzdE5hbWUiOiAiQm9ubyJ9
+    
+    curl -X GET http://localhost:8080/v1/diff/1
+    
+    Result: {"equals":true,"equalsInSize":true,"diff":[]}
